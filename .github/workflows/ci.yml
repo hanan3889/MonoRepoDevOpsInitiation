@@ -21,6 +21,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: ⬇️ Cloner le référentiel backend
+        run: |
+          git clone --depth 1 https://github.com/hanan3889/mini-blog-backend.git backend
 
       - name: 🛠 Build de l'image Docker
         run: |
