@@ -27,7 +27,8 @@ jobs:
       - name: 🚀 Push de l'image sur Docker Hub
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest
-
-      - name: 🧹 Nettoyage de l'image Docker
+    
+      - name: 🧹 Nettoyage de l'image Docker 
+        if: always()  
         run: |
-          docker rmi ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest 
