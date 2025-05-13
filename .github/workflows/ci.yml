@@ -19,9 +19,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: 🛠 Build de l'image Dockerr
+      - name: 🛠 Build de l'image Docker
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest -f backend/Dockerfile backend/
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest -f backend/Dockerfile ./backend
 
       - name: 🚀 Push de l'image sur Docker Hub
         run: |
