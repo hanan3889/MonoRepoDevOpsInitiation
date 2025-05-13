@@ -13,11 +13,6 @@ jobs:
       - name: 📥 Checkout du code
         uses: actions/checkout@v3
 
-      - name: Affiche les fichiers dispo
-        run: |
-          ls -la
-          ls -la backend
-
       - name: 🔐 Connexion à Docker Hub
         uses: docker/login-action@v2
         with:
@@ -26,7 +21,7 @@ jobs:
 
       - name: 🛠 Build de l'image Docker
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest -f /backend/Dockerfile ./backend
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest -f backend/Dockerfile ./backend
 
       - name: 🚀 Push de l'image sur Docker Hub
         run: |
