@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: 📥 Checkout du code
@@ -22,14 +22,14 @@ jobs:
       - name: 🛠 Build de l'image Docker
         run: |
           cd backend
-          pwd
+          pwd # Utile pour vérifier le répertoire courant
           docker build -t ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest -f backend/Dockerfile ./backend
 
       - name: 🚀 Push de l'image sur Docker Hub
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest
-    
+
       - name: 🧹 Nettoyage de l'image Docker
-        if: always()  
+        if: always()
         run: |
-          docker rmi ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest 
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/mini-blog-backend:latest
